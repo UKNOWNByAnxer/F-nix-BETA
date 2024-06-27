@@ -14,7 +14,9 @@ const $container = $('main');
 const $button = $('button');
 const $info = $('small');
 
-const SELECTED_MODEL = 'Llama-3-8B-Instruct-q4f32_1-MLC-1k';
+const SELECTED_MODEL = 'Llama-3-8B-Instruct-q4f32_1-MLC-1k'; 
+//¡gemma-2b-it-q4f32_1-MLC LOW MODEL
+//!Llama-3-8B-Instruct-q4f32_1-MLC-1k BEST MODEL
 const engine = await CreateMLCEngine(
     SELECTED_MODEL,
     {
@@ -54,6 +56,7 @@ $form.addEventListener('submit', async (e) => {
 
     const userMessage = { role: 'user', content: messageText };
     messages.push(userMessage);
+    const $botMessage = addMessage("", 'bot'); // Añade un mensaje vacío para el bot
 
     const chunks = await engine.chat.completions.create({
         messages,
